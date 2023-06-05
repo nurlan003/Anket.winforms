@@ -64,7 +64,6 @@
             label1.Text="Anket";
             label1.TextAlign=ContentAlignment.MiddleCenter;
             label1.UseCompatibleTextRendering=true;
-            label1.Click+=label1_Click;
             // 
             // label2
             // 
@@ -227,6 +226,7 @@
             button1.TabIndex=18;
             button1.Text="Save";
             button1.UseVisualStyleBackColor=false;
+            button1.Click+=button1_Click;
             // 
             // button2
             // 

@@ -12,47 +12,6 @@ namespace Anket.winforms
         }
 
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            string name = textBox2.Text;
-            string Surname = textBox1.Text;
-            string Fathername = textBox3.Text;
-            string Country = textBox4.Text;
-            string City = textBox5.Text;
-            string Phone = textBox6.Text;
-            DateTime birthdaydateTime = dateTimePicker1.Value;
-            string Gender = "";
-            if (radioButton1.Checked)
-            {
-                Gender = "Male";
-            }
-            else if (radioButton2.Checked)
-            {
-                Gender = "Female";
-            }
-            Human human = new Human(name, Surname, Fathername, Country, City, Phone, birthdaydateTime, Gender);
-
-            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
-            {
-                saveFileDialog.Filter = "JSON Files (*.json)|*.json";
-                saveFileDialog.Title = "Save JSON File";
-
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                {
-
-                    var json = JsonConvert.SerializeObject(human);
-                    File.WriteAllText(saveFileDialog.FileName, json);
-                }
-            }
-
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -85,8 +44,8 @@ namespace Anket.winforms
                     dateTimePicker1.Value = birthdayDate;
                     if (Gender=="Male")
                     {
-                        radioButton1.Checked = true; 
-                        radioButton2.Checked = false; 
+                        radioButton1.Checked = true;
+                        radioButton2.Checked = false;
 
                     }
                     if (Gender=="Female")
@@ -97,6 +56,40 @@ namespace Anket.winforms
 
 
 
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string name = textBox2.Text;
+            string Surname = textBox1.Text;
+            string Fathername = textBox3.Text;
+            string Country = textBox4.Text;
+            string City = textBox5.Text;
+            string Phone = textBox6.Text;
+            DateTime birthdaydateTime = dateTimePicker1.Value;
+            string Gender = "";
+            if (radioButton1.Checked)
+            {
+                Gender = "Male";
+            }
+            else if (radioButton2.Checked)
+            {
+                Gender = "Female";
+            }
+            Human human = new Human(name, Surname, Fathername, Country, City, Phone, birthdaydateTime, Gender);
+
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "JSON Files (*.json)|*.json";
+                saveFileDialog.Title = "Save JSON File";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+
+                    var json = JsonConvert.SerializeObject(human);
+                    File.WriteAllText(saveFileDialog.FileName, json);
                 }
             }
         }
